@@ -43,10 +43,10 @@
     <div class="row align-items-center g-5">
       <div class="col-lg-6" data-aos="fade-right">
         <div class="about-img-grid">
-          <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&q=80"
-               class="img-main rounded shadow-lg" alt="Tyagi Resort pool view" loading="lazy" />
-          <img src="https://images.unsplash.com/photo-1584132967334-10e028bd69f7?w=400&q=80"
-               class="img-badge rounded shadow-lg" alt="Tyagi Resort entrance" loading="lazy" />
+          <img src="{{ url_for('static', filename='images/Photos-3-001/IMG_9104.jpg') }}"
+               class="img-main rounded shadow-lg" alt="Tyagi Resort" loading="lazy" />
+          <img src="{{ url_for('static', filename='images/Photos-3-001/IMG_9105.jpg') }}"
+               class="img-badge rounded shadow-lg" alt="Tyagi Resort" loading="lazy" />
         </div>
       </div>
       <div class="col-lg-6" data-aos="fade-left">
@@ -160,14 +160,12 @@
     </div>
     <div class="row g-3">
       {% set gallery_imgs = [
-        ('https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=800&q=80','Resort entrance at golden hour','col-md-6 col-lg-4'),
-        ('https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=800&q=80','Aerial pool view','col-md-6 col-lg-4'),
-        ('https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800&q=80','Dining al fresco','col-md-6 col-lg-4'),
-        ('https://images.unsplash.com/photo-1522798514-97ceb8c4f1c8?w=800&q=80','Bridal banquet setup','col-md-6 col-lg-6'),
-        ('https://images.unsplash.com/photo-1444201983204-c43cbd584d93?w=800&q=80','Spa treatment room','col-md-6 col-lg-6'),
-        ('https://images.unsplash.com/photo-1584132967334-10e028bd69f7?w=800&q=80','Lobby interior','col-md-6 col-lg-4'),
-        ('https://images.unsplash.com/photo-1455587734955-081b22074882?w=800&q=80','Chef\'s gourmet kitchen','col-md-6 col-lg-4'),
-        ('https://images.unsplash.com/photo-1549294413-26f195200c16?w=800&q=80','Garden pathway','col-md-6 col-lg-4')
+        ('/static/images/Photos-3-001/IMG_9103.jpg', 'Tyagi Resort', 'col-md-6 col-lg-4'),
+        ('/static/images/Photos-3-001/IMG_9104.jpg', 'Tyagi Resort', 'col-md-6 col-lg-4'),
+        ('/static/images/Photos-3-001/IMG_9105.jpg', 'Tyagi Resort', 'col-md-6 col-lg-4'),
+        ('/static/images/Photos-3-001/IMG_9106.jpg', 'Tyagi Resort', 'col-md-6 col-lg-4'),
+        ('/static/images/Photos-3-001/IMG_9108.jpg', 'Tyagi Resort', 'col-md-6 col-lg-4'),
+        ('/static/images/Photos-3-001/IMG_9110.jpg', 'Tyagi Resort', 'col-md-6 col-lg-4')
       ] %}
       {% for src, alt, col_class in gallery_imgs %}
       <div class="{{ col_class }}" data-aos="zoom-in">
