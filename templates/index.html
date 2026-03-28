@@ -160,17 +160,17 @@
     </div>
     <div class="row g-3">
       {% set gallery_imgs = [
-        ('/static/images/Photos-3-001/IMG_9103.jpg', 'Tyagi Resort', 'col-md-6 col-lg-4'),
-        ('/static/images/Photos-3-001/IMG_9104.jpg', 'Tyagi Resort', 'col-md-6 col-lg-4'),
-        ('/static/images/Photos-3-001/IMG_9105.jpg', 'Tyagi Resort', 'col-md-6 col-lg-4'),
-        ('/static/images/Photos-3-001/IMG_9106.jpg', 'Tyagi Resort', 'col-md-6 col-lg-4'),
-        ('/static/images/Photos-3-001/IMG_9108.jpg', 'Tyagi Resort', 'col-md-6 col-lg-4'),
-        ('/static/images/Photos-3-001/IMG_9110.jpg', 'Tyagi Resort', 'col-md-6 col-lg-4')
+        ('images/Photos-3-001/IMG_9103.jpg', 'Tyagi Resort', 'col-md-6 col-lg-4'),
+        ('images/Photos-3-001/IMG_9104.jpg', 'Tyagi Resort', 'col-md-6 col-lg-4'),
+        ('images/Photos-3-001/IMG_9105.jpg', 'Tyagi Resort', 'col-md-6 col-lg-4'),
+        ('images/Photos-3-001/IMG_9106.jpg', 'Tyagi Resort', 'col-md-6 col-lg-4'),
+        ('images/Photos-3-001/IMG_9108.jpg', 'Tyagi Resort', 'col-md-6 col-lg-4'),
+        ('images/Photos-3-001/IMG_9110.jpg', 'Tyagi Resort', 'col-md-6 col-lg-4')
       ] %}
       {% for src, alt, col_class in gallery_imgs %}
       <div class="{{ col_class }}" data-aos="zoom-in">
         <div class="gallery-item">
-          <img src="{{ src }}" alt="{{ alt }}" class="img-fluid rounded" loading="lazy" />
+          <img src="{{ url_for('static', filename=src) }}" alt="{{ alt }}" class="img-fluid rounded" loading="lazy" />
           <div class="gallery-overlay">
             <i class="fa-solid fa-expand fa-lg text-white"></i>
           </div>
