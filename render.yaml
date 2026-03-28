@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: tyagi-resort
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app --bind 0.0.0.0:$PORT --workers 2 --timeout 60
+    envVars:
+      - key: SECRET_KEY
+        generateValue: true
+      - key: MAIL_USERNAME
+        value: styagi9817@gmail.com
+      - key: MAIL_PASSWORD
+        sync: false
+      - key: PYTHON_VERSION
+        value: 3.11.9
