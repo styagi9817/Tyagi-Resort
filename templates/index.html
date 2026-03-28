@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}Tyagi Resort – Luxury Resort & Catering{% endblock %}
+{% block title %}Tyagi Resort – A Luxury Escape{% endblock %}
 
 {% block content %}
 
@@ -19,11 +19,11 @@
           and create memories that last a lifetime.
         </p>
         <div class="d-flex flex-wrap justify-content-center gap-3">
-          <a href="#rooms" class="btn btn-warning btn-lg px-5 fw-bold">
-            <i class="fa-solid fa-bed me-2"></i>Explore Rooms
+          <a href="{{ url_for('catering_enquiry') }}" class="btn btn-warning btn-lg px-5 fw-bold">
+            <i class="fa-solid fa-calendar-check me-2"></i>Book Now
           </a>
-          <a href="{{ url_for('catering_enquiry') }}" class="btn btn-outline-light btn-lg px-5">
-            <i class="fa-solid fa-utensils me-2"></i>Catering Enquiry
+          <a href="#contact" class="btn btn-outline-light btn-lg px-5">
+            <i class="fa-solid fa-phone me-2"></i>Contact Us
           </a>
         </div>
       </div>
@@ -35,29 +35,7 @@
   </div>
 </section>
 
-<!-- ======= HIGHLIGHTS STRIP ======= -->
-<section class="highlights-strip bg-warning py-4">
-  <div class="container">
-    <div class="row text-center g-3">
-      <div class="col-6 col-md-3">
-        <i class="fa-solid fa-wifi fa-lg mb-1"></i>
-        <p class="mb-0 fw-semibold small">Free High-Speed WiFi</p>
-      </div>
-      <div class="col-6 col-md-3">
-        <i class="fa-solid fa-swimming-pool fa-lg mb-1"></i>
-        <p class="mb-0 fw-semibold small">Infinity Pool</p>
-      </div>
-      <div class="col-6 col-md-3">
-        <i class="fa-solid fa-utensils fa-lg mb-1"></i>
-        <p class="mb-0 fw-semibold small">24/7 Fine Dining</p>
-      </div>
-      <div class="col-6 col-md-3">
-        <i class="fa-solid fa-spa fa-lg mb-1"></i>
-        <p class="mb-0 fw-semibold small">Luxury Spa</p>
-      </div>
-    </div>
-  </div>
-</section>
+
 
 <!-- ======= ABOUT SECTION ======= -->
 <section id="about" class="about-section py-6">
@@ -139,81 +117,7 @@
   </div>
 </section>
 
-<!-- ======= ROOMS SECTION ======= -->
-<section id="rooms" class="rooms-section py-6">
-  <div class="container">
-    <div class="section-header text-center mb-5" data-aos="fade-up">
-      <p class="section-tag text-warning fw-semibold">OUR ACCOMMODATIONS</p>
-      <h2 class="section-title">Rooms &amp; Suites</h2>
-      <p class="text-muted mx-auto" style="max-width:560px;">Retreat into our exquisitely appointed rooms – each a private sanctuary with premium amenities.</p>
-    </div>
-    <div class="row g-4">
-      <!-- Room 1 -->
-      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="0">
-        <div class="room-card">
-          <div class="room-img-wrap">
-            <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&q=80"
-                 alt="Deluxe Room" loading="lazy" />
-            <span class="room-badge">DELUXE</span>
-          </div>
-          <div class="room-body">
-            <h5 class="room-title">Deluxe Garden Room</h5>
-            <p class="room-desc text-muted small">Comfortable rooms with scenic garden views, king-size beds, and premium bath amenities.</p>
-            <div class="d-flex justify-content-between align-items-center gap-2 flex-wrap">
-              <div class="room-features d-flex gap-2 small text-muted">
-                <span><i class="fa-solid fa-bed text-warning me-1"></i>King Bed</span>
-                <span><i class="fa-solid fa-maximize text-warning me-1"></i>35 m²</span>
-              </div>
-              <a href="{{ url_for('catering_enquiry') }}" class="btn btn-sm btn-outline-warning">Enquire</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Room 2 -->
-      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
-        <div class="room-card">
-          <div class="room-img-wrap">
-            <img src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?w=800&q=80"
-                 alt="Luxury Suite" loading="lazy" />
-            <span class="room-badge bg-warning text-dark">SUITE</span>
-          </div>
-          <div class="room-body">
-            <h5 class="room-title">Luxury Suite</h5>
-            <p class="room-desc text-muted small">Sprawling suites with a private living area, jacuzzi, and panoramic resort views.</p>
-            <div class="d-flex justify-content-between align-items-center gap-2 flex-wrap">
-              <div class="room-features d-flex gap-2 small text-muted">
-                <span><i class="fa-solid fa-bed text-warning me-1"></i>King Bed</span>
-                <span><i class="fa-solid fa-maximize text-warning me-1"></i>70 m²</span>
-              </div>
-              <a href="{{ url_for('catering_enquiry') }}" class="btn btn-sm btn-outline-warning">Enquire</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Room 3 -->
-      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
-        <div class="room-card">
-          <div class="room-img-wrap">
-            <img src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=800&q=80"
-                 alt="Family Room" loading="lazy" />
-            <span class="room-badge">FAMILY</span>
-          </div>
-          <div class="room-body">
-            <h5 class="room-title">Family Pool Villa</h5>
-            <p class="room-desc text-muted small">Spacious family villas with a private plunge pool, two bedrooms, and a kids' play area.</p>
-            <div class="d-flex justify-content-between align-items-center gap-2 flex-wrap">
-              <div class="room-features d-flex gap-2 small text-muted">
-                <span><i class="fa-solid fa-bed text-warning me-1"></i>2 Beds</span>
-                <span><i class="fa-solid fa-maximize text-warning me-1"></i>100 m²</span>
-              </div>
-              <a href="{{ url_for('catering_enquiry') }}" class="btn btn-sm btn-outline-warning">Enquire</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+
 
 <!-- ======= AMENITIES SECTION ======= -->
 <section id="amenities" class="amenities-section py-6 bg-light">
@@ -324,35 +228,7 @@
   </div>
 </section>
 
-<!-- ======= CATERING CTA ======= -->
-<section class="catering-cta-section py-6">
-  <div class="container">
-    <div class="row align-items-center g-4">
-      <div class="col-lg-7" data-aos="fade-right">
-        <p class="section-tag text-warning fw-semibold">EVENTS & CATERING</p>
-        <h2 class="section-title mb-3">Planning a Special Event?</h2>
-        <p class="text-muted mb-4">
-          Whether it's a royal wedding, corporate event, birthday bash, or intimate dinner party —
-          our expert culinary team crafts extraordinary menus tailored to your occasion.
-          Enquire now and let us make your celebration unforgettable.
-        </p>
-        <ul class="list-unstyled mb-4">
-          <li class="mb-2"><i class="fa-solid fa-circle-check text-warning me-2"></i>Custom Menu Designing</li>
-          <li class="mb-2"><i class="fa-solid fa-circle-check text-warning me-2"></i>Vegetarian & Non-vegetarian options</li>
-          <li class="mb-2"><i class="fa-solid fa-circle-check text-warning me-2"></i>Live Food Stations & Counters</li>
-          <li class="mb-2"><i class="fa-solid fa-circle-check text-warning me-2"></i>Decor & Floral Arrangements</li>
-        </ul>
-        <a href="{{ url_for('catering_enquiry') }}" class="btn btn-warning btn-lg px-5 fw-bold">
-          <i class="fa-solid fa-paper-plane me-2"></i>Send Catering Enquiry
-        </a>
-      </div>
-      <div class="col-lg-5" data-aos="fade-left">
-        <img src="https://images.unsplash.com/photo-1555244162-803834f70033?w=700&q=80"
-             class="img-fluid rounded-4 shadow-lg" alt="Catering at Tyagi Resort" loading="lazy" />
-      </div>
-    </div>
-  </div>
-</section>
+
 
 <!-- ======= CONTACT SECTION ======= -->
 <section id="contact" class="contact-section py-6 bg-light">
@@ -369,14 +245,14 @@
             <div class="contact-icon-box"><i class="fa-solid fa-location-dot text-warning"></i></div>
             <div>
               <p class="fw-semibold mb-0">Address</p>
-              <small class="text-muted">Tyagi Resort, Uttar Pradesh, India</small>
+              <small><a href="https://maps.app.goo.gl/uMMmwKgYtc1e5ZWd9" target="_blank" rel="noopener noreferrer" class="text-warning">Tyagi Resort – View on Google Maps</a></small>
             </div>
           </div>
           <div class="d-flex gap-3 mb-3">
             <div class="contact-icon-box"><i class="fa-solid fa-phone text-warning"></i></div>
             <div>
               <p class="fw-semibold mb-0">Phone</p>
-              <small class="text-muted">+91 98170 XXXXX</small>
+              <small><a href="tel:+919639583744" class="text-muted text-decoration-none">+91 96395 83744</a></small>
             </div>
           </div>
           <div class="d-flex gap-3 mb-3">
@@ -396,12 +272,17 @@
         </div>
       </div>
       <div class="col-lg-7" data-aos="fade-left">
-        <!-- Embed Google Maps iframe (generic Uttar Pradesh placeholder) -->
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3559.7!2d80.9462!3d26.8467!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjbCsDUwJzQ4LjIiTiA4MMKwNTYnNDYuMyJF!5e0!3m2!1sen!2sin!4v1700000000000"
-          width="100%" height="350" style="border:0;border-radius:1rem;" allowfullscreen=""
-          loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Tyagi Resort Location">
-        </iframe>
+        <div class="map-card rounded-4 shadow-sm overflow-hidden" style="height:350px;position:relative;background:#f0ede8;">
+          <div class="d-flex flex-column align-items-center justify-content-center h-100 text-center p-4">
+            <i class="fa-solid fa-location-dot fa-4x text-warning mb-3"></i>
+            <h5 class="fw-bold mb-2">Tyagi Resort</h5>
+            <p class="text-muted small mb-4">Click below to open our exact location on Google Maps</p>
+            <a href="https://maps.app.goo.gl/uMMmwKgYtc1e5ZWd9" target="_blank" rel="noopener noreferrer"
+               class="btn btn-warning btn-lg px-5 fw-bold">
+              <i class="fa-solid fa-map-location-dot me-2"></i>Open in Google Maps
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   </div>

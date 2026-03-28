@@ -39,13 +39,12 @@
       <ul class="navbar-nav ms-auto gap-lg-2">
         <li class="nav-item"><a class="nav-link" href="{{ url_for('index') }}#home">Home</a></li>
         <li class="nav-item"><a class="nav-link" href="{{ url_for('index') }}#about">About</a></li>
-        <li class="nav-item"><a class="nav-link" href="{{ url_for('index') }}#rooms">Rooms</a></li>
         <li class="nav-item"><a class="nav-link" href="{{ url_for('index') }}#amenities">Amenities</a></li>
         <li class="nav-item"><a class="nav-link" href="{{ url_for('index') }}#gallery">Gallery</a></li>
         <li class="nav-item"><a class="nav-link" href="{{ url_for('index') }}#contact">Contact</a></li>
         <li class="nav-item ms-lg-2">
           <a class="btn btn-warning px-3 fw-bold" href="{{ url_for('catering_enquiry') }}">
-            <i class="fa-solid fa-utensils me-1"></i> Catering Enquiry
+            <i class="fa-solid fa-calendar-check me-1"></i> Booking Enquiry
           </a>
         </li>
       </ul>
@@ -88,9 +87,8 @@
         <ul class="list-unstyled small">
           <li><a href="#home" class="footer-link">Home</a></li>
           <li><a href="#about" class="footer-link">About Us</a></li>
-          <li><a href="#rooms" class="footer-link">Rooms</a></li>
           <li><a href="#gallery" class="footer-link">Gallery</a></li>
-          <li><a href="{{ url_for('catering_enquiry') }}" class="footer-link">Catering</a></li>
+          <li><a href="{{ url_for('catering_enquiry') }}" class="footer-link">Booking Enquiry</a></li>
         </ul>
       </div>
       <div class="col-lg-3 col-md-6">
@@ -106,8 +104,8 @@
       <div class="col-lg-3 col-md-6">
         <h6 class="text-warning fw-bold mb-3">Contact</h6>
         <ul class="list-unstyled small text-white-50">
-          <li class="mb-2"><i class="fa-solid fa-location-dot text-warning me-2"></i>Tyagi Resort, Uttar Pradesh, India</li>
-          <li class="mb-2"><i class="fa-solid fa-phone text-warning me-2"></i>+91 98170 XXXXX</li>
+          <li class="mb-2"><i class="fa-solid fa-location-dot text-warning me-2"></i><a href="https://maps.app.goo.gl/uMMmwKgYtc1e5ZWd9" target="_blank" rel="noopener noreferrer" class="text-white-50 text-decoration-none">Tyagi Resort – View on Maps</a></li>
+          <li class="mb-2"><i class="fa-solid fa-phone text-warning me-2"></i><a href="tel:+919639583744" class="text-white-50 text-decoration-none">+91 96395 83744</a></li>
           <li class="mb-2"><i class="fa-solid fa-envelope text-warning me-2"></i>styagi9817@gmail.com</li>
           <li><i class="fa-solid fa-clock text-warning me-2"></i>Open 24 × 7</li>
         </ul>
