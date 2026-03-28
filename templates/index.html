@@ -123,29 +123,51 @@
 <section id="amenities" class="amenities-section py-6 bg-light">
   <div class="container">
     <div class="section-header text-center mb-5" data-aos="fade-up">
-      <p class="section-tag text-warning fw-semibold">WORLD-CLASS FACILITIES</p>
-      <h2 class="section-title">Resort Amenities</h2>
+      <p class="section-tag text-warning fw-semibold">CELEBRATE WITH US</p>
+      <h2 class="section-title">Events &amp; Occasions</h2>
+      <p class="text-muted mx-auto" style="max-width:560px;">From intimate gatherings to grand celebrations, Tyagi Resort is the perfect venue for every special moment.</p>
     </div>
     <div class="row g-4 text-center">
-      {% set amenities = [
-        ('fa-swimming-pool','Infinity Pool','Dive into our stunning pool surrounded by lush gardens.'),
-        ('fa-spa','Luxury Spa','Rejuvenate with our signature Ayurvedic and modern spa therapies.'),
-        ('fa-utensils','Fine Dining','Savour authentic Indian and global cuisine at our restaurants.'),
-        ('fa-dumbbell','Fitness Centre','State-of-the-art gym with personal trainers available.'),
-        ('fa-champagne-glasses','Banquet Halls','Elegant halls for weddings, conferences and celebrations.'),
-        ('fa-tree','Nature Trails','Guided nature walks and eco-adventure experiences.')
-      ] %}
-      {% for icon, title, desc in amenities %}
-      <div class="col-sm-6 col-lg-4" data-aos="fade-up">
+      <div class="col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="0">
         <div class="amenity-card p-4 h-100 rounded-3 bg-white shadow-sm">
           <div class="amenity-icon mb-3">
-            <i class="fa-solid {{ icon }} fa-2x text-warning"></i>
+            <i class="fa-solid fa-rings-wedding fa-2x text-warning"></i>
           </div>
-          <h5 class="fw-semibold mb-2">{{ title }}</h5>
-          <p class="text-muted small mb-0">{{ desc }}</p>
+          <h5 class="fw-semibold mb-2">Marriages</h5>
+          <p class="text-muted small mb-0">Make your big day truly royal with our grand banquet halls, lush lawns, and bespoke wedding decor.</p>
+          <a href="{{ url_for('catering_enquiry') }}" class="btn btn-sm btn-outline-warning mt-3">Enquire</a>
         </div>
       </div>
-      {% endfor %}
+      <div class="col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+        <div class="amenity-card p-4 h-100 rounded-3 bg-white shadow-sm">
+          <div class="amenity-icon mb-3">
+            <i class="fa-solid fa-cake-candles fa-2x text-warning"></i>
+          </div>
+          <h5 class="fw-semibold mb-2">Birthday Parties</h5>
+          <p class="text-muted small mb-0">Celebrate your birthday in style with custom themes, live entertainment, and a personalised cake.</p>
+          <a href="{{ url_for('catering_enquiry') }}" class="btn btn-sm btn-outline-warning mt-3">Enquire</a>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
+        <div class="amenity-card p-4 h-100 rounded-3 bg-white shadow-sm">
+          <div class="amenity-icon mb-3">
+            <i class="fa-solid fa-people-group fa-2x text-warning"></i>
+          </div>
+          <h5 class="fw-semibold mb-2">Kitty Parties</h5>
+          <p class="text-muted small mb-0">A vibrant, fun-filled setting with special menus, games, and a warm ambience perfect for your group.</p>
+          <a href="{{ url_for('catering_enquiry') }}" class="btn btn-sm btn-outline-warning mt-3">Enquire</a>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
+        <div class="amenity-card p-4 h-100 rounded-3 bg-white shadow-sm">
+          <div class="amenity-icon mb-3">
+            <i class="fa-solid fa-heart fa-2x text-warning"></i>
+          </div>
+          <h5 class="fw-semibold mb-2">Anniversary Events</h5>
+          <p class="text-muted small mb-0">Relive your love story with a romantic candlelit setup, floral decor, and an unforgettable dinner.</p>
+          <a href="{{ url_for('catering_enquiry') }}" class="btn btn-sm btn-outline-warning mt-3">Enquire</a>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -183,50 +205,7 @@
   </div>
 </section>
 
-<!-- ======= TESTIMONIALS ======= -->
-<section class="testimonials-section py-6 bg-dark text-white">
-  <div class="container">
-    <div class="section-header text-center mb-5" data-aos="fade-up">
-      <p class="section-tag text-warning fw-semibold">GUEST REVIEWS</p>
-      <h2 class="section-title text-white">What Our Guests Say</h2>
-    </div>
-    <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
-      <div class="carousel-inner">
-        {% set testimonials = [
-          ('Priya Sharma','New Delhi','The rooms are stunning and the staff goes above and beyond. The catering for our wedding reception was absolutely divine – every dish was perfection!','fa-star fa-star fa-star fa-star fa-star'),
-          ('Rakesh Gupta','Lucknow','A beautiful resort with peaceful surroundings. The pool area and spa were world-class. We will definitely be coming back for our anniversary!','fa-star fa-star fa-star fa-star fa-star'),
-          ('Anita Verma','Agra','The family villa was perfect for our group. Kids loved the play area and we loved the evening bonfire. Highly recommend Tyagi Resort for family getaways.','fa-star fa-star fa-star fa-star fa-star-half-stroke')
-        ] %}
-        {% for name, city, review, stars in testimonials %}
-        <div class="carousel-item {% if loop.first %}active{% endif %}">
-          <div class="row justify-content-center">
-            <div class="col-lg-7 text-center px-4">
-              <i class="fa-solid fa-quote-left fa-2x text-warning mb-3"></i>
-              <p class="lead fs-5 text-white-75 fst-italic mb-4">"{{ review }}"</p>
-              <div class="text-warning mb-1">
-                {% for s in stars.split(' ') %}<i class="fa-solid {{ s }}"></i>{% endfor %}
-              </div>
-              <h6 class="text-white fw-bold mb-0">{{ name }}</h6>
-              <small class="text-warning">{{ city }}</small>
-            </div>
-          </div>
-        </div>
-        {% endfor %}
-      </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon"></span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
-        <span class="carousel-control-next-icon"></span>
-      </button>
-      <div class="carousel-indicators">
-        {% for i in range(3) %}
-          <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="{{ i }}" {% if i==0 %}class="active"{% endif %}></button>
-        {% endfor %}
-      </div>
-    </div>
-  </div>
-</section>
+
 
 
 
