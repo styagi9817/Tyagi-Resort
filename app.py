@@ -1,4 +1,5 @@
 import os
+import threading
 from flask import Flask, render_template, request, redirect, url_for, flash
 from flask_mail import Mail, Message
 from dotenv import load_dotenv
@@ -15,10 +16,21 @@ app.config["MAIL_USE_TLS"] = True
 app.config["MAIL_USERNAME"] = os.environ.get("MAIL_USERNAME", "styagi9817@gmail.com")
 app.config["MAIL_PASSWORD"] = os.environ.get("MAIL_PASSWORD", "")
 app.config["MAIL_DEFAULT_SENDER"] = os.environ.get("MAIL_USERNAME", "styagi9817@gmail.com")
+app.config["MAIL_TIMEOUT"] = 10  # seconds – prevents worker hang
 
 mail = Mail(app)
 
 RESORT_EMAIL = "styagi9817@gmail.com"
+MAIL_ENABLED = bool(os.environ.get("MAIL_PASSWORD", "").strip())
+
+
+def send_async_email(app_ctx, msg):
+    """Send email in background thread so the HTTP response is never blocked."""
+    with app_ctx:
+        try:
+            mail.send(msg)
+        except Exception as exc:
+            app.logger.error("Async mail send failed: %s", exc)
 
 
 @app.route("/")
@@ -60,29 +72,32 @@ def catering_enquiry():
                 form_data=request.form,
             )
 
-        # Send email notification to resort
-        try:
+        # Send emails in background threads (non-blocking) so the worker never hangs
+        if MAIL_ENABLED:
             resort_msg = Message(
-                subject=f"New Catering Enquiry – {event_type} | {name}",
+                subject=f"New Booking Enquiry – {event_type} | {name}",
                 sender=app.config["MAIL_DEFAULT_SENDER"],
                 recipients=[RESORT_EMAIL],
             )
             resort_msg.body = f"""
-New Catering Enquiry Received
+New Booking Enquiry Received
 ==============================
-Name        : {name}
-Email       : {email}
-Phone       : {phone}
-Event Type  : {event_type}
-Event Date  : {event_date}
+Name         : {name}
+Email        : {email}
+Phone        : {phone}
+Event Type   : {event_type}
+Event Date   : {event_date}
 No. of Guests: {guests}
 
 Message:
 {message}
 """
-            mail.send(resort_msg)
+            threading.Thread(
+                target=send_async_email,
+                args=(app.app_context(), resort_msg),
+                daemon=True,
+            ).start()
 
-            # Send confirmation to enquirer
             confirm_msg = Message(
                 subject="Thank you for your enquiry – Tyagi Resort",
                 sender=app.config["MAIL_DEFAULT_SENDER"],
@@ -91,31 +106,28 @@ Message:
             confirm_msg.body = f"""
 Dear {name},
 
-Thank you for reaching out to Tyagi Resort! We have received your catering enquiry
+Thank you for reaching out to Tyagi Resort! We have received your booking enquiry
 for a {event_type} on {event_date} for {guests} guests.
 
-Our catering team will get in touch with you shortly at {phone} or {email}.
+Our team will get in touch with you shortly at {phone} or {email}.
 
 Warm regards,
 Tyagi Resort Team
 styagi9817@gmail.com
 """
-            mail.send(confirm_msg)
+            threading.Thread(
+                target=send_async_email,
+                args=(app.app_context(), confirm_msg),
+                daemon=True,
+            ).start()
+        else:
+            app.logger.warning("MAIL_PASSWORD not set – skipping email for enquiry from %s", email)
 
-            flash(
-                "Your enquiry has been submitted successfully! We will contact you soon.",
-                "success",
-            )
-            return redirect(url_for("thank_you"))
-
-        except Exception as exc:
-            app.logger.error("Mail send failed: %s", exc)
-            flash(
-                "Your enquiry was received but we could not send a confirmation email right now. "
-                "We will still get back to you!",
-                "warning",
-            )
-            return redirect(url_for("thank_you"))
+        flash(
+            "Your enquiry has been submitted successfully! We will contact you soon.",
+            "success",
+        )
+        return redirect(url_for("thank_you"))
 
     return render_template("catering.html", form_data={})
 
