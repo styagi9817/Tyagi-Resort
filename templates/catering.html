@@ -1,0 +1,121 @@
+{% extends "base.html" %}
+
+{% block title %}Catering Enquiry – Tyagi Resort{% endblock %}
+
+{% block content %}
+<section class="catering-page-hero d-flex align-items-center">
+  <div class="hero-overlay"></div>
+  <div class="container position-relative text-center text-white" data-aos="fade-up">
+    <i class="fa-solid fa-utensils fa-3x text-warning mb-3"></i>
+    <h1 class="display-5 fw-bold">Catering Enquiry</h1>
+    <p class="lead text-white-75">Tell us about your event – we'll craft an extraordinary experience.</p>
+  </div>
+</section>
+
+<section class="py-6 bg-light">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8" data-aos="fade-up">
+
+        <div class="card shadow-lg border-0 rounded-4 overflow-hidden">
+          <div class="card-header catering-card-header text-white py-4 text-center">
+            <h4 class="mb-1 fw-bold"><i class="fa-solid fa-champagne-glasses me-2"></i>Event Catering Enquiry Form</h4>
+            <p class="mb-0 small opacity-75">Fill in the details and our team will reach out within 24 hours.</p>
+          </div>
+          <div class="card-body p-4 p-md-5">
+
+            <form method="POST" action="{{ url_for('catering_enquiry') }}" novalidate id="cateringForm">
+
+              <!-- Personal Details -->
+              <h6 class="form-section-heading mb-3">
+                <i class="fa-solid fa-user text-warning me-2"></i>Personal Details
+              </h6>
+              <div class="row g-3 mb-4">
+                <div class="col-md-6">
+                  <label for="name" class="form-label fw-semibold">Full Name <span class="text-danger">*</span></label>
+                  <input type="text" class="form-control form-control-lg" id="name" name="name"
+                         placeholder="e.g. Rahul Tyagi"
+                         value="{{ form_data.get('name','') }}" required />
+                </div>
+                <div class="col-md-6">
+                  <label for="phone" class="form-label fw-semibold">Phone Number <span class="text-danger">*</span></label>
+                  <input type="tel" class="form-control form-control-lg" id="phone" name="phone"
+                         placeholder="+91 XXXXXXXXXX"
+                         value="{{ form_data.get('phone','') }}" required />
+                </div>
+                <div class="col-12">
+                  <label for="email" class="form-label fw-semibold">Email Address <span class="text-danger">*</span></label>
+                  <input type="email" class="form-control form-control-lg" id="email" name="email"
+                         placeholder="you@example.com"
+                         value="{{ form_data.get('email','') }}" required />
+                </div>
+              </div>
+
+              <hr class="my-4" />
+
+              <!-- Event Details -->
+              <h6 class="form-section-heading mb-3">
+                <i class="fa-solid fa-calendar-days text-warning me-2"></i>Event Details
+              </h6>
+              <div class="row g-3 mb-4">
+                <div class="col-md-6">
+                  <label for="event_type" class="form-label fw-semibold">Event Type <span class="text-danger">*</span></label>
+                  <select class="form-select form-select-lg" id="event_type" name="event_type" required>
+                    <option value="" disabled {% if not form_data.get('event_type') %}selected{% endif %}>Select event type</option>
+                    {% for opt in ['Wedding / Shaadi','Birthday Party','Corporate Event','Anniversary Dinner','Baby Shower','Engagement Ceremony','Family Reunion','Conference / Seminar','Other'] %}
+                    <option value="{{ opt }}" {% if form_data.get('event_type')==opt %}selected{% endif %}>{{ opt }}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+                <div class="col-md-6">
+                  <label for="event_date" class="form-label fw-semibold">Event Date <span class="text-danger">*</span></label>
+                  <input type="date" class="form-control form-control-lg" id="event_date" name="event_date"
+                         value="{{ form_data.get('event_date','') }}" min="{{ '' }}" required />
+                </div>
+                <div class="col-md-6">
+                  <label for="guests" class="form-label fw-semibold">Expected Guests <span class="text-danger">*</span></label>
+                  <select class="form-select form-select-lg" id="guests" name="guests" required>
+                    <option value="" disabled {% if not form_data.get('guests') %}selected{% endif %}>Select range</option>
+                    {% for opt in ['Upto 50','51 – 100','101 – 200','201 – 500','501 – 1000','1000+'] %}
+                    <option value="{{ opt }}" {% if form_data.get('guests')==opt %}selected{% endif %}>{{ opt }}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+                <div class="col-md-6">
+                  <label for="venue_pref" class="form-label fw-semibold">Venue Preference</label>
+                  <select class="form-select form-select-lg" id="venue_pref" name="venue_pref">
+                    <option value="">No preference</option>
+                    {% for opt in ['Indoor Banquet Hall','Outdoor Lawn','Poolside','Terrace','Garden Pavilion'] %}
+                    <option value="{{ opt }}" {% if form_data.get('venue_pref')==opt %}selected{% endif %}>{{ opt }}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+                <div class="col-12">
+                  <label for="message" class="form-label fw-semibold">Special Requests / Message</label>
+                  <textarea class="form-control" id="message" name="message" rows="4"
+                            placeholder="Tell us your dietary requirements, theme preferences, or any other details…">{{ form_data.get('message','') }}</textarea>
+                </div>
+              </div>
+
+              <!-- Privacy note -->
+              <p class="small text-muted mb-4">
+                <i class="fa-solid fa-shield-halved text-warning me-1"></i>
+                Your information is safe with us and will only be used to respond to your enquiry.
+                Confirmation will be sent to your email and to <strong>styagi9817@gmail.com</strong>.
+              </p>
+
+              <div class="d-grid">
+                <button type="submit" class="btn btn-warning btn-lg fw-bold py-3">
+                  <i class="fa-solid fa-paper-plane me-2"></i>Submit Enquiry
+                </button>
+              </div>
+
+            </form>
+          </div><!-- card-body -->
+        </div><!-- card -->
+
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

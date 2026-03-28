@@ -1,0 +1,410 @@
+{% extends "base.html" %}
+
+{% block title %}Tyagi Resort – Luxury Resort & Catering{% endblock %}
+
+{% block content %}
+
+<!-- ======= HERO SECTION ======= -->
+<section id="home" class="hero-section d-flex align-items-center">
+  <div class="hero-overlay"></div>
+  <div class="container position-relative" data-aos="fade-up">
+    <div class="row justify-content-center text-center">
+      <div class="col-lg-9">
+        <p class="hero-tagline text-warning fw-light letter-spacing-wide mb-2">
+          <i class="fa-solid fa-star-of-life me-2 small"></i>WELCOME TO<i class="fa-solid fa-star-of-life ms-2 small"></i>
+        </p>
+        <h1 class="hero-title text-white mb-3">Tyagi Resort</h1>
+        <p class="hero-subtitle text-white-75 mb-4">
+          Where Nature Meets Luxury – Escape to serenity, indulge in world-class hospitality<br class="d-none d-md-block" />
+          and create memories that last a lifetime.
+        </p>
+        <div class="d-flex flex-wrap justify-content-center gap-3">
+          <a href="#rooms" class="btn btn-warning btn-lg px-5 fw-bold">
+            <i class="fa-solid fa-bed me-2"></i>Explore Rooms
+          </a>
+          <a href="{{ url_for('catering_enquiry') }}" class="btn btn-outline-light btn-lg px-5">
+            <i class="fa-solid fa-utensils me-2"></i>Catering Enquiry
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Scroll hint -->
+  <div class="scroll-indicator">
+    <span></span><span></span><span></span>
+  </div>
+</section>
+
+<!-- ======= HIGHLIGHTS STRIP ======= -->
+<section class="highlights-strip bg-warning py-4">
+  <div class="container">
+    <div class="row text-center g-3">
+      <div class="col-6 col-md-3">
+        <i class="fa-solid fa-wifi fa-lg mb-1"></i>
+        <p class="mb-0 fw-semibold small">Free High-Speed WiFi</p>
+      </div>
+      <div class="col-6 col-md-3">
+        <i class="fa-solid fa-swimming-pool fa-lg mb-1"></i>
+        <p class="mb-0 fw-semibold small">Infinity Pool</p>
+      </div>
+      <div class="col-6 col-md-3">
+        <i class="fa-solid fa-utensils fa-lg mb-1"></i>
+        <p class="mb-0 fw-semibold small">24/7 Fine Dining</p>
+      </div>
+      <div class="col-6 col-md-3">
+        <i class="fa-solid fa-spa fa-lg mb-1"></i>
+        <p class="mb-0 fw-semibold small">Luxury Spa</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= ABOUT SECTION ======= -->
+<section id="about" class="about-section py-6">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6" data-aos="fade-right">
+        <div class="about-img-grid">
+          <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&q=80"
+               class="img-main rounded shadow-lg" alt="Tyagi Resort pool view" loading="lazy" />
+          <img src="https://images.unsplash.com/photo-1584132967334-10e028bd69f7?w=400&q=80"
+               class="img-badge rounded shadow-lg" alt="Tyagi Resort entrance" loading="lazy" />
+        </div>
+      </div>
+      <div class="col-lg-6" data-aos="fade-left">
+        <p class="section-tag text-warning fw-semibold mb-2">ABOUT TYAGI RESORT</p>
+        <h2 class="section-title mb-4">A New Standard of Luxury &amp; Comfort</h2>
+        <p class="text-muted">
+          Nestled amid lush greenery and natural splendour, <strong>Tyagi Resort</strong> is
+          a newly opened luxury destination offering a perfect blend of traditional Indian warmth
+          and modern elegance. Every corner of our resort has been thoughtfully curated to give
+          our guests an unparalleled experience.
+        </p>
+        <p class="text-muted">
+          From lavish rooms and gourmet dining to expansive event venues and soulful spa
+          treatments — we offer everything you need for a perfect getaway or a grand celebration.
+        </p>
+        <div class="row g-3 mt-2">
+          <div class="col-6">
+            <div class="d-flex align-items-center gap-3">
+              <div class="about-icon-box bg-warning-subtle rounded p-2"><i class="fa-solid fa-award text-warning fa-lg"></i></div>
+              <div><h6 class="mb-0">Award-winning</h6><small class="text-muted">Hospitality</small></div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="d-flex align-items-center gap-3">
+              <div class="about-icon-box bg-warning-subtle rounded p-2"><i class="fa-solid fa-leaf text-warning fa-lg"></i></div>
+              <div><h6 class="mb-0">Eco-Friendly</h6><small class="text-muted">Sustainable Resort</small></div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="d-flex align-items-center gap-3">
+              <div class="about-icon-box bg-warning-subtle rounded p-2"><i class="fa-solid fa-champagne-glasses text-warning fa-lg"></i></div>
+              <div><h6 class="mb-0">Events & Weddings</h6><small class="text-muted">Grand Venues</small></div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="d-flex align-items-center gap-3">
+              <div class="about-icon-box bg-warning-subtle rounded p-2"><i class="fa-solid fa-concierge-bell text-warning fa-lg"></i></div>
+              <div><h6 class="mb-0">Concierge</h6><small class="text-muted">24 × 7 Service</small></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= STATS ======= -->
+<section class="stats-section bg-dark text-white py-5">
+  <div class="container">
+    <div class="row text-center g-4">
+      <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="0">
+        <h2 class="display-5 fw-bold text-warning counter" data-target="48">0</h2>
+        <p class="mb-0 text-white-50">Luxury Rooms</p>
+      </div>
+      <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="100">
+        <h2 class="display-5 fw-bold text-warning counter" data-target="5">0</h2>
+        <p class="mb-0 text-white-50">Dining Venues</p>
+      </div>
+      <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="200">
+        <h2 class="display-5 fw-bold text-warning counter" data-target="3">0</h2>
+        <p class="mb-0 text-white-50">Event Halls</p>
+      </div>
+      <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="300">
+        <h2 class="display-5 fw-bold text-warning counter" data-target="1000">0</h2>
+        <p class="mb-0 text-white-50">Happy Guests</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= ROOMS SECTION ======= -->
+<section id="rooms" class="rooms-section py-6">
+  <div class="container">
+    <div class="section-header text-center mb-5" data-aos="fade-up">
+      <p class="section-tag text-warning fw-semibold">OUR ACCOMMODATIONS</p>
+      <h2 class="section-title">Rooms &amp; Suites</h2>
+      <p class="text-muted mx-auto" style="max-width:560px;">Retreat into our exquisitely appointed rooms – each a private sanctuary with premium amenities.</p>
+    </div>
+    <div class="row g-4">
+      <!-- Room 1 -->
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="0">
+        <div class="room-card">
+          <div class="room-img-wrap">
+            <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&q=80"
+                 alt="Deluxe Room" loading="lazy" />
+            <span class="room-badge">DELUXE</span>
+          </div>
+          <div class="room-body">
+            <h5 class="room-title">Deluxe Garden Room</h5>
+            <p class="room-desc text-muted small">Comfortable rooms with scenic garden views, king-size beds, and premium bath amenities.</p>
+            <div class="d-flex justify-content-between align-items-center gap-2 flex-wrap">
+              <div class="room-features d-flex gap-2 small text-muted">
+                <span><i class="fa-solid fa-bed text-warning me-1"></i>King Bed</span>
+                <span><i class="fa-solid fa-maximize text-warning me-1"></i>35 m²</span>
+              </div>
+              <a href="{{ url_for('catering_enquiry') }}" class="btn btn-sm btn-outline-warning">Enquire</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Room 2 -->
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="room-card">
+          <div class="room-img-wrap">
+            <img src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?w=800&q=80"
+                 alt="Luxury Suite" loading="lazy" />
+            <span class="room-badge bg-warning text-dark">SUITE</span>
+          </div>
+          <div class="room-body">
+            <h5 class="room-title">Luxury Suite</h5>
+            <p class="room-desc text-muted small">Sprawling suites with a private living area, jacuzzi, and panoramic resort views.</p>
+            <div class="d-flex justify-content-between align-items-center gap-2 flex-wrap">
+              <div class="room-features d-flex gap-2 small text-muted">
+                <span><i class="fa-solid fa-bed text-warning me-1"></i>King Bed</span>
+                <span><i class="fa-solid fa-maximize text-warning me-1"></i>70 m²</span>
+              </div>
+              <a href="{{ url_for('catering_enquiry') }}" class="btn btn-sm btn-outline-warning">Enquire</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Room 3 -->
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+        <div class="room-card">
+          <div class="room-img-wrap">
+            <img src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=800&q=80"
+                 alt="Family Room" loading="lazy" />
+            <span class="room-badge">FAMILY</span>
+          </div>
+          <div class="room-body">
+            <h5 class="room-title">Family Pool Villa</h5>
+            <p class="room-desc text-muted small">Spacious family villas with a private plunge pool, two bedrooms, and a kids' play area.</p>
+            <div class="d-flex justify-content-between align-items-center gap-2 flex-wrap">
+              <div class="room-features d-flex gap-2 small text-muted">
+                <span><i class="fa-solid fa-bed text-warning me-1"></i>2 Beds</span>
+                <span><i class="fa-solid fa-maximize text-warning me-1"></i>100 m²</span>
+              </div>
+              <a href="{{ url_for('catering_enquiry') }}" class="btn btn-sm btn-outline-warning">Enquire</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= AMENITIES SECTION ======= -->
+<section id="amenities" class="amenities-section py-6 bg-light">
+  <div class="container">
+    <div class="section-header text-center mb-5" data-aos="fade-up">
+      <p class="section-tag text-warning fw-semibold">WORLD-CLASS FACILITIES</p>
+      <h2 class="section-title">Resort Amenities</h2>
+    </div>
+    <div class="row g-4 text-center">
+      {% set amenities = [
+        ('fa-swimming-pool','Infinity Pool','Dive into our stunning pool surrounded by lush gardens.'),
+        ('fa-spa','Luxury Spa','Rejuvenate with our signature Ayurvedic and modern spa therapies.'),
+        ('fa-utensils','Fine Dining','Savour authentic Indian and global cuisine at our restaurants.'),
+        ('fa-dumbbell','Fitness Centre','State-of-the-art gym with personal trainers available.'),
+        ('fa-champagne-glasses','Banquet Halls','Elegant halls for weddings, conferences and celebrations.'),
+        ('fa-tree','Nature Trails','Guided nature walks and eco-adventure experiences.')
+      ] %}
+      {% for icon, title, desc in amenities %}
+      <div class="col-sm-6 col-lg-4" data-aos="fade-up">
+        <div class="amenity-card p-4 h-100 rounded-3 bg-white shadow-sm">
+          <div class="amenity-icon mb-3">
+            <i class="fa-solid {{ icon }} fa-2x text-warning"></i>
+          </div>
+          <h5 class="fw-semibold mb-2">{{ title }}</h5>
+          <p class="text-muted small mb-0">{{ desc }}</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- ======= GALLERY SECTION ======= -->
+<section id="gallery" class="gallery-section py-6">
+  <div class="container-fluid px-4">
+    <div class="section-header text-center mb-5" data-aos="fade-up">
+      <p class="section-tag text-warning fw-semibold">RESORT IN PICTURES</p>
+      <h2 class="section-title">Photo Gallery</h2>
+      <p class="text-muted">A glimpse into the magical world of Tyagi Resort</p>
+    </div>
+    <div class="row g-3">
+      {% set gallery_imgs = [
+        ('https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=800&q=80','Resort entrance at golden hour','col-md-6 col-lg-4'),
+        ('https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=800&q=80','Aerial pool view','col-md-6 col-lg-4'),
+        ('https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800&q=80','Dining al fresco','col-md-6 col-lg-4'),
+        ('https://images.unsplash.com/photo-1522798514-97ceb8c4f1c8?w=800&q=80','Bridal banquet setup','col-md-6 col-lg-6'),
+        ('https://images.unsplash.com/photo-1444201983204-c43cbd584d93?w=800&q=80','Spa treatment room','col-md-6 col-lg-6'),
+        ('https://images.unsplash.com/photo-1584132967334-10e028bd69f7?w=800&q=80','Lobby interior','col-md-6 col-lg-4'),
+        ('https://images.unsplash.com/photo-1455587734955-081b22074882?w=800&q=80','Chef\'s gourmet kitchen','col-md-6 col-lg-4'),
+        ('https://images.unsplash.com/photo-1549294413-26f195200c16?w=800&q=80','Garden pathway','col-md-6 col-lg-4')
+      ] %}
+      {% for src, alt, col_class in gallery_imgs %}
+      <div class="{{ col_class }}" data-aos="zoom-in">
+        <div class="gallery-item">
+          <img src="{{ src }}" alt="{{ alt }}" class="img-fluid rounded" loading="lazy" />
+          <div class="gallery-overlay">
+            <i class="fa-solid fa-expand fa-lg text-white"></i>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- ======= TESTIMONIALS ======= -->
+<section class="testimonials-section py-6 bg-dark text-white">
+  <div class="container">
+    <div class="section-header text-center mb-5" data-aos="fade-up">
+      <p class="section-tag text-warning fw-semibold">GUEST REVIEWS</p>
+      <h2 class="section-title text-white">What Our Guests Say</h2>
+    </div>
+    <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        {% set testimonials = [
+          ('Priya Sharma','New Delhi','The rooms are stunning and the staff goes above and beyond. The catering for our wedding reception was absolutely divine – every dish was perfection!','fa-star fa-star fa-star fa-star fa-star'),
+          ('Rakesh Gupta','Lucknow','A beautiful resort with peaceful surroundings. The pool area and spa were world-class. We will definitely be coming back for our anniversary!','fa-star fa-star fa-star fa-star fa-star'),
+          ('Anita Verma','Agra','The family villa was perfect for our group. Kids loved the play area and we loved the evening bonfire. Highly recommend Tyagi Resort for family getaways.','fa-star fa-star fa-star fa-star fa-star-half-stroke')
+        ] %}
+        {% for name, city, review, stars in testimonials %}
+        <div class="carousel-item {% if loop.first %}active{% endif %}">
+          <div class="row justify-content-center">
+            <div class="col-lg-7 text-center px-4">
+              <i class="fa-solid fa-quote-left fa-2x text-warning mb-3"></i>
+              <p class="lead fs-5 text-white-75 fst-italic mb-4">"{{ review }}"</p>
+              <div class="text-warning mb-1">
+                {% for s in stars.split(' ') %}<i class="fa-solid {{ s }}"></i>{% endfor %}
+              </div>
+              <h6 class="text-white fw-bold mb-0">{{ name }}</h6>
+              <small class="text-warning">{{ city }}</small>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+      </button>
+      <div class="carousel-indicators">
+        {% for i in range(3) %}
+          <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="{{ i }}" {% if i==0 %}class="active"{% endif %}></button>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= CATERING CTA ======= -->
+<section class="catering-cta-section py-6">
+  <div class="container">
+    <div class="row align-items-center g-4">
+      <div class="col-lg-7" data-aos="fade-right">
+        <p class="section-tag text-warning fw-semibold">EVENTS & CATERING</p>
+        <h2 class="section-title mb-3">Planning a Special Event?</h2>
+        <p class="text-muted mb-4">
+          Whether it's a royal wedding, corporate event, birthday bash, or intimate dinner party —
+          our expert culinary team crafts extraordinary menus tailored to your occasion.
+          Enquire now and let us make your celebration unforgettable.
+        </p>
+        <ul class="list-unstyled mb-4">
+          <li class="mb-2"><i class="fa-solid fa-circle-check text-warning me-2"></i>Custom Menu Designing</li>
+          <li class="mb-2"><i class="fa-solid fa-circle-check text-warning me-2"></i>Vegetarian & Non-vegetarian options</li>
+          <li class="mb-2"><i class="fa-solid fa-circle-check text-warning me-2"></i>Live Food Stations & Counters</li>
+          <li class="mb-2"><i class="fa-solid fa-circle-check text-warning me-2"></i>Decor & Floral Arrangements</li>
+        </ul>
+        <a href="{{ url_for('catering_enquiry') }}" class="btn btn-warning btn-lg px-5 fw-bold">
+          <i class="fa-solid fa-paper-plane me-2"></i>Send Catering Enquiry
+        </a>
+      </div>
+      <div class="col-lg-5" data-aos="fade-left">
+        <img src="https://images.unsplash.com/photo-1555244162-803834f70033?w=700&q=80"
+             class="img-fluid rounded-4 shadow-lg" alt="Catering at Tyagi Resort" loading="lazy" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= CONTACT SECTION ======= -->
+<section id="contact" class="contact-section py-6 bg-light">
+  <div class="container">
+    <div class="section-header text-center mb-5" data-aos="fade-up">
+      <p class="section-tag text-warning fw-semibold">GET IN TOUCH</p>
+      <h2 class="section-title">Find Us</h2>
+    </div>
+    <div class="row g-4 align-items-stretch">
+      <div class="col-lg-5" data-aos="fade-right">
+        <div class="contact-info-box bg-white rounded-4 shadow-sm p-4 h-100">
+          <h5 class="fw-bold mb-4">Contact Information</h5>
+          <div class="d-flex gap-3 mb-3">
+            <div class="contact-icon-box"><i class="fa-solid fa-location-dot text-warning"></i></div>
+            <div>
+              <p class="fw-semibold mb-0">Address</p>
+              <small class="text-muted">Tyagi Resort, Uttar Pradesh, India</small>
+            </div>
+          </div>
+          <div class="d-flex gap-3 mb-3">
+            <div class="contact-icon-box"><i class="fa-solid fa-phone text-warning"></i></div>
+            <div>
+              <p class="fw-semibold mb-0">Phone</p>
+              <small class="text-muted">+91 98170 XXXXX</small>
+            </div>
+          </div>
+          <div class="d-flex gap-3 mb-3">
+            <div class="contact-icon-box"><i class="fa-solid fa-envelope text-warning"></i></div>
+            <div>
+              <p class="fw-semibold mb-0">Email</p>
+              <small><a href="mailto:styagi9817@gmail.com" class="text-warning">styagi9817@gmail.com</a></small>
+            </div>
+          </div>
+          <div class="d-flex gap-3">
+            <div class="contact-icon-box"><i class="fa-solid fa-clock text-warning"></i></div>
+            <div>
+              <p class="fw-semibold mb-0">Hours</p>
+              <small class="text-muted">Open 24 × 7, 365 days</small>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-7" data-aos="fade-left">
+        <!-- Embed Google Maps iframe (generic Uttar Pradesh placeholder) -->
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3559.7!2d80.9462!3d26.8467!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjbCsDUwJzQ4LjIiTiA4MMKwNTYnNDYuMyJF!5e0!3m2!1sen!2sin!4v1700000000000"
+          width="100%" height="350" style="border:0;border-radius:1rem;" allowfullscreen=""
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Tyagi Resort Location">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
