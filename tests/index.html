@@ -43,24 +43,24 @@
     <div class="row align-items-center g-5">
       <div class="col-lg-6" data-aos="fade-right">
         <div class="about-img-grid">
-          <img src="{{ url_for('static', filename='images/Photos-3-001/IMG_9104.jpg') }}"
-               class="img-main rounded shadow-lg" alt="Tyagi Resort" loading="lazy" />
-          <img src="{{ url_for('static', filename='images/Photos-3-001/IMG_9105.jpg') }}"
-               class="img-badge rounded shadow-lg" alt="Tyagi Resort" loading="lazy" />
+          <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&q=80"
+               class="img-main rounded shadow-lg" alt="Tyagi Resort pool view" loading="lazy" />
+          <img src="https://images.unsplash.com/photo-1584132967334-10e028bd69f7?w=400&q=80"
+               class="img-badge rounded shadow-lg" alt="Tyagi Resort entrance" loading="lazy" />
         </div>
       </div>
       <div class="col-lg-6" data-aos="fade-left">
         <p class="section-tag text-warning fw-semibold mb-2">ABOUT TYAGI RESORT</p>
         <h2 class="section-title mb-4">A New Standard of Luxury &amp; Comfort</h2>
         <p class="text-muted">
-          <strong>Tyagi Resort</strong> is a newly opened resort set amidst peaceful greenery,
-          offering a warm and welcoming space for families, friends, and special occasions.
-          We bring together traditional Indian hospitality with a comfortable, homely atmosphere.
+          Nestled amid lush greenery and natural splendour, <strong>Tyagi Resort</strong> is
+          a newly opened luxury destination offering a perfect blend of traditional Indian warmth
+          and modern elegance. Every corner of our resort has been thoughtfully curated to give
+          our guests an unparalleled experience.
         </p>
         <p class="text-muted">
-          Whether you are planning a wedding, a birthday celebration, a kitty party, or an
-          anniversary gathering — Tyagi Resort is the perfect place to make your moments
-          memorable.
+          From lavish rooms and gourmet dining to expansive event venues and soulful spa
+          treatments — we offer everything you need for a perfect getaway or a grand celebration.
         </p>
         <div class="row g-3 mt-2">
           <div class="col-6">
@@ -93,7 +93,29 @@
   </div>
 </section>
 
-
+<!-- ======= STATS ======= -->
+<section class="stats-section bg-dark text-white py-5">
+  <div class="container">
+    <div class="row text-center g-4">
+      <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="0">
+        <h2 class="display-5 fw-bold text-warning counter" data-target="48">0</h2>
+        <p class="mb-0 text-white-50">Luxury Rooms</p>
+      </div>
+      <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="100">
+        <h2 class="display-5 fw-bold text-warning counter" data-target="5">0</h2>
+        <p class="mb-0 text-white-50">Dining Venues</p>
+      </div>
+      <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="200">
+        <h2 class="display-5 fw-bold text-warning counter" data-target="3">0</h2>
+        <p class="mb-0 text-white-50">Event Halls</p>
+      </div>
+      <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="300">
+        <h2 class="display-5 fw-bold text-warning counter" data-target="1000">0</h2>
+        <p class="mb-0 text-white-50">Happy Guests</p>
+      </div>
+    </div>
+  </div>
+</section>
 
 
 
@@ -160,17 +182,19 @@
     </div>
     <div class="row g-3">
       {% set gallery_imgs = [
-        ('images/Photos-3-001/IMG_9103.jpg', 'Tyagi Resort', 'col-md-6 col-lg-4'),
-        ('images/Photos-3-001/IMG_9104.jpg', 'Tyagi Resort', 'col-md-6 col-lg-4'),
-        ('images/Photos-3-001/IMG_9105.jpg', 'Tyagi Resort', 'col-md-6 col-lg-4'),
-        ('images/Photos-3-001/IMG_9106.jpg', 'Tyagi Resort', 'col-md-6 col-lg-4'),
-        ('images/Photos-3-001/IMG_9108.jpg', 'Tyagi Resort', 'col-md-6 col-lg-4'),
-        ('images/Photos-3-001/IMG_9110.jpg', 'Tyagi Resort', 'col-md-6 col-lg-4')
+        ('https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=800&q=80','Resort entrance at golden hour','col-md-6 col-lg-4'),
+        
+        ('https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800&q=80','Dining al fresco','col-md-6 col-lg-4'),
+        ('https://images.unsplash.com/photo-1522798514-97ceb8c4f1c8?w=800&q=80','Bridal banquet setup','col-md-6 col-lg-6'),
+        
+        ('https://images.unsplash.com/photo-1584132967334-10e028bd69f7?w=800&q=80','Lobby interior','col-md-6 col-lg-4'),
+        ('https://images.unsplash.com/photo-1455587734955-081b22074882?w=800&q=80','Chef\'s gourmet kitchen','col-md-6 col-lg-4'),
+        ('https://images.unsplash.com/photo-1549294413-26f195200c16?w=800&q=80','Garden pathway','col-md-6 col-lg-4')
       ] %}
       {% for src, alt, col_class in gallery_imgs %}
       <div class="{{ col_class }}" data-aos="zoom-in">
         <div class="gallery-item">
-          <img src="{{ url_for('static', filename=src) }}" alt="{{ alt }}" class="img-fluid rounded" loading="lazy" />
+          <img src="{{ src }}" alt="{{ alt }}" class="img-fluid rounded" loading="lazy" />
           <div class="gallery-overlay">
             <i class="fa-solid fa-expand fa-lg text-white"></i>
           </div>
@@ -207,7 +231,6 @@
             <div class="contact-icon-box"><i class="fa-solid fa-phone text-warning"></i></div>
             <div>
               <p class="fw-semibold mb-0">Phone</p>
-              <small><a href="tel:+916395873430" class="text-muted text-decoration-none">+91 6395873430</a></small>
               <small><a href="tel:+919639583744" class="text-muted text-decoration-none">+91 96395 83744</a></small>
             </div>
           </div>
