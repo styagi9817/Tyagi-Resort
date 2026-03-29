@@ -10,27 +10,35 @@ app = Flask(__name__)
 app.secret_key = os.environ.get("SECRET_KEY", "tyagi-resort-secret-2024")
 
 # Flask-Mail configuration (uses Gmail SMTP)
-app.config["MAIL_SERVER"] = "smtp.gmail.com"
-app.config["MAIL_PORT"] = 587
-app.config["MAIL_USE_TLS"] = True
-app.config["MAIL_USERNAME"] = os.environ.get("MAIL_USERNAME", "styagi9817@gmail.com")
-app.config["MAIL_PASSWORD"] = os.environ.get("MAIL_PASSWORD", "")
-app.config["MAIL_DEFAULT_SENDER"] = os.environ.get("MAIL_USERNAME", "styagi9817@gmail.com")
-app.config["MAIL_TIMEOUT"] = 10  # seconds – prevents worker hang
+# Strip spaces from App Password — Google shows it as "xxxx xxxx xxxx xxxx"
+_mail_password = os.environ.get("MAIL_PASSWORD", "").replace(" ", "").strip()
+_mail_user    = os.environ.get("MAIL_USERNAME", "styagi9817@gmail.com").strip()
+
+app.config["MAIL_SERVER"]         = "smtp.gmail.com"
+app.config["MAIL_PORT"]           = 587
+app.config["MAIL_USE_TLS"]        = True
+app.config["MAIL_USERNAME"]       = _mail_user
+app.config["MAIL_PASSWORD"]       = _mail_password
+app.config["MAIL_DEFAULT_SENDER"] = _mail_user
+app.config["MAIL_TIMEOUT"]        = 15   # socket timeout – prevents indefinite hang
 
 mail = Mail(app)
 
 RESORT_EMAIL = "styagi9817@gmail.com"
-MAIL_ENABLED = bool(os.environ.get("MAIL_PASSWORD", "").strip())
+MAIL_ENABLED  = bool(_mail_password)
+
+# Startup diagnostic – visible in Render logs
+print(f"[MAIL] MAIL_ENABLED={MAIL_ENABLED}  username={_mail_user}  password_len={len(_mail_password)}", flush=True)
 
 
 def send_async_email(app_ctx, msg):
-    """Send email in background thread so the HTTP response is never blocked."""
+    """Send email in a non-daemon background thread."""
     with app_ctx:
         try:
             mail.send(msg)
+            print(f"[MAIL] Sent OK → {msg.recipients}", flush=True)
         except Exception as exc:
-            app.logger.error("Async mail send failed: %s", exc)
+            print(f"[MAIL] ERROR sending to {msg.recipients}: {exc}", flush=True)
 
 
 @app.route("/")
@@ -95,7 +103,7 @@ Message:
             threading.Thread(
                 target=send_async_email,
                 args=(app.app_context(), resort_msg),
-                daemon=True,
+                daemon=False,   # non-daemon: thread completes before process can exit
             ).start()
 
             confirm_msg = Message(
@@ -118,10 +126,10 @@ styagi9817@gmail.com
             threading.Thread(
                 target=send_async_email,
                 args=(app.app_context(), confirm_msg),
-                daemon=True,
+                daemon=False,   # non-daemon: thread completes before process can exit
             ).start()
         else:
-            app.logger.warning("MAIL_PASSWORD not set – skipping email for enquiry from %s", email)
+            print(f"[MAIL] SKIPPED – MAIL_ENABLED is False. Check MAIL_PASSWORD env var on Render.", flush=True)
 
         flash(
             "Your enquiry has been submitted successfully! We will contact you soon.",
@@ -137,10 +145,28 @@ def thank_you():
     return render_template("thankyou.html")
 
 
+@app.route("/test-email")
+def test_email():
+    """Diagnostic route – visit this URL to verify email config is working."""
+    if not MAIL_ENABLED:
+        return {"status": "MAIL_DISABLED", "reason": "MAIL_PASSWORD env var is not set or empty"}, 503
+    try:
+        msg = Message(
+            subject="Tyagi Resort – Email Test",
+            sender=app.config["MAIL_DEFAULT_SENDER"],
+            recipients=[RESORT_EMAIL],
+        )
+        msg.body = "This is a test email from Tyagi Resort to confirm SMTP is working correctly."
+        mail.send(msg)
+        return {"status": "OK", "message": f"Test email sent to {RESORT_EMAIL}"}, 200
+    except Exception as exc:
+        return {"status": "ERROR", "detail": str(exc)}, 500
+
+
 @app.route("/health")
 def health():
-    """Health-check endpoint used by Heroku and tests."""
-    return {"status": "ok"}, 200
+    """Health-check endpoint."""
+    return {"status": "ok", "mail_enabled": MAIL_ENABLED}, 200
 
 
 if __name__ == "__main__":
